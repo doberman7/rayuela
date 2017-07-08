@@ -12,25 +12,14 @@ $(document).ready(function(){
       };
     });
 
-
-			var $trP1 = $("#Player1")
-			for (var v = 0; v <= 10000;  v = v + 500) {
-				setTimeout(function(){
-					$($trP1).find(".active").next().addClass("active");
-					//$($trP1).first().find(".active").removeClass("active");
-					console.log(v);
-				}, v);
-
-			}
-
-
-
-
-			//en 1500 milisegs, en la fila encontrar el primer hijo con classe "active" y remover clase "active"
-			//  	var c = $(p).first(".active").removeClass("active").html;
-
-
-
-
-
+	//crear funcion que recibe un jugador
+		/*
+			-asignar variable que obtiene objeto con la clase active = CURRENT
+			-asignar variable que obtiene el siguiente objeto a la clase active = NEXT
+			-calcular indice del objeto con la clase active
+			-remover la clase "active" de CURRENT
+			-agregar clase "active" a NEXT
+			-condicionar evento al index del tr
+			-establecer SetTimeout 
+		*/
 });
