@@ -13,32 +13,22 @@ $(document).ready(function(){
     });
 
 
-			var p = $("#Player1")
-			for (var i = 0; i <= 20000;  i = i + 1000) {
+			var $trP1 = $("#Player1")
+			for (var v = 0; v <= 10000;  v = v + 500) {
 				setTimeout(function(){
-					$(p).find(".active").next().addClass("active").html();
-				}, i);
+					$($trP1).find(".active").next().addClass("active");
+					//$($trP1).first().find(".active").removeClass("active");
+					console.log(v);
+				}, v);
+
 			}
 
-			// setTimeout(function(){
-			// 	$(".active").next().addClass("active").html();
-			// }, 1000);
-			//
-			// setTimeout(function(){
-			// 	var c = $(".active").next().addClass("active").html();
-			//
-			// }, 2000);
-			//
-			// setTimeout(function(){
-			// 	var d = $(".active").next().addClass("active").html();
-			// }, 3000);
+
 
 
 			//en 1500 milisegs, en la fila encontrar el primer hijo con classe "active" y remover clase "active"
-			// setTimeout(function(){
 			//  	var c = $(p).first(".active").removeClass("active").html;
-			// 	console.log(c);
-			// }, 2000);
+
 
 
 
