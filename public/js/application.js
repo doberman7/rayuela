@@ -17,9 +17,7 @@ $(document).ready(function(){
       };
     });//-------------------------------------------
 
-
-  //lanzar dados
-
+  $(".table").prepend("<button id=restart_btn>Reiniciar</button><br>");
 
   //atar evento "keydown" al metod creado llamando keyStop
   $(window).bind(keyStop());
@@ -64,8 +62,9 @@ function lanzarDado(player, lengtH) {
       },200);
     }
 };//-------------------------------------------
+
 //source: https://api.jquery.com/event.which/
-//en la ventana al aprentar tecla..
+//ver en inspector la tecla precionada
 // $(window).keydown(function( event ) {
 //   //mostrar el tipo de evento y tecla apretada
 //   console.log(event.type+": "+ event.which);
