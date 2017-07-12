@@ -16,25 +16,26 @@ $(document).ready(function(){
     });//-------------------------------------------
 
 
+  //lanzar dados
+
+
+  //atar evento "keydown" al metod creado llamando keyStop
+  $(window).bind(keyStop());
 
   lanzarDado("#Player1");
-  $(window).bind("keydown", keyStop());
-  //lanzar_dado("#Player2");
   lanzarDado("#Player2");
-  $(window).bind("keydown", keyStop());
 
+});//------------------FIN DOCUMENT READY
 
-
-});//------------------end document rea
-
+//funcion para detener avance del metodo lanzar dado, basicamente asigna valores true a las variables globales teclaS y teclaÑ
 function keyStop() {
-  $(window).keydown(function ( event ) {
+  $(window).keydown(function (  ) {
     if (83 == event.keyCode) {
       teclaS = true;
-      console.log("trrueueueueueu");
+      console.log(event.type+": "+ event.which);
     }else if ( 186 == event.keyCode){
       teclaÑ = true;
-      console.log(teclaÑ);
+      console.log(event.type+": "+ event.which);
     }
   });
 };
@@ -47,9 +48,9 @@ function lanzarDado(player) {
     $current_player.next().addClass("active");
 
     if (player == "#Player1" && teclaS == true){
-      console.log("Player1 terminado");
+      //console.log("Player1 terminado");
     }else if (player == "#Player2" && teclaÑ == true){
-      console.log("Player2 terminado");
+      //console.log("Player2 terminado");
     //si el largo del <tr id="Player1">  es mayor o igual la indice del <td class="active">
     }else if (player.length + 1 >= $($current_player).index()){
       //establecer tiempo de ejecucion de lanzar el dado
@@ -60,7 +61,7 @@ function lanzarDado(player) {
 };//-------------------------------------------
 //source: https://api.jquery.com/event.which/
 //en la ventana al aprentar tecla..
-$(window).keydown(function( event ) {
-  //mostrar el tipo de evento y tecla apretada
-  console.log(event.type+": "+ event.which);
-});
+// $(window).keydown(function( event ) {
+//   //mostrar el tipo de evento y tecla apretada
+//   console.log(event.type+": "+ event.which);
+// });
