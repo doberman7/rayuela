@@ -17,15 +17,14 @@ $(document).ready(function(){
       };
     });//-------------------------------------------
 
+  //anexar boton reiniciar
   $(".table").prepend("<button id=restart_btn>Reiniciar</button><br>");
-
+  $("#restart_btn").bind(restarGame());
   //atar evento "keydown" al metod creado llamando keyStop
   $(window).bind(keyStop());
   //boton "jugar" inicia el juego
-  $("#start_btn").click(function(){
-    lanzarDado("#Player1",lengtH);
-    lanzarDado("#Player2", lengtH);
-  });
+  $("#start_btn").bind(throwDices());
+
 
 
 });//------------------FIN DOCUMENT READY
@@ -62,6 +61,21 @@ function lanzarDado(player, lengtH) {
       },200);
     }
 };//-------------------------------------------
+
+function throwDices() {
+  $(this).click(function () {
+    lanzarDado("#Player1",lengtH);
+    lanzarDado("#Player2", lengtH);
+  })
+};
+
+
+
+function restarGame(){
+  $(this).click(function () {
+
+  })
+};
 
 //source: https://api.jquery.com/event.which/
 //ver en inspector la tecla precionada
