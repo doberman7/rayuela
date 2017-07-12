@@ -1,7 +1,7 @@
 $(document).ready(function(){
   //asignar filas a variable
   var $tableRows = $("tr");
-  lengtH = 20
+  lengtH = 15
   //variable global para las teclas S y Ñ respectivamente
   teclaS = false;
   teclaÑ = false;
@@ -10,7 +10,8 @@ $(document).ready(function(){
       //AGREGAR CASILLAS: td es el tableData, iniciando en 1, mientras sea menor o igual a 20, aumentar 1
       for (var tdN = 1; tdN <= lengtH; tdN++) {
         //anexar en cada fila un "td" con id="tdN"
-        $(tableRow).append("<td id="+tdN+">fila: "+k+" id: "+tdN+"</td>");
+        $(tableRow).append("<td id="+tdN+"></td>");
+        //$(tableRow).append("<td id="+tdN+">fila: "+k+" id: "+tdN+"</td>");
         //MOVER CLASE ACTIVE:
         //en 950 milisegs, en la fila encontrar hijo con lcase "active" y al siguiente elemento y añadir la clase "active"
       };
@@ -22,9 +23,12 @@ $(document).ready(function(){
 
   //atar evento "keydown" al metod creado llamando keyStop
   $(window).bind(keyStop());
+  //boton "jugar" inicia el juego
+  $("#start_btn").click(function(){
+    lanzarDado("#Player1",lengtH);
+    lanzarDado("#Player2", lengtH);
+  });
 
-  lanzarDado("#Player1",lengtH);
-  lanzarDado("#Player2", lengtH);
 
 });//------------------FIN DOCUMENT READY
 
@@ -54,7 +58,6 @@ function lanzarDado(player, lengtH) {
       //console.log("Player2 terminado");
     //si el largo del <tr id="Player1">  es mayor o igual la indice del <td class="active">
   }else if (lengtH -1 >= $($current_player).index()){
-    console.log($($current_player).index() -1);
       //establecer tiempo de ejecucion de lanzar el dado
       setTimeout(function() {
         lanzarDado(player, lengtH);

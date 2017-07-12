@@ -4,13 +4,12 @@
   width: 20px;
   border-top: solid black;
   border-bottom: solid black;
-  width: 90px;
+  width: 100px;
 }
 
 .table td.active {
   background-color: red;
 }
-
 
 .container {
   margin: 0 auto;
@@ -57,7 +56,6 @@ button:hover {
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
-
 
 body {
   background-color: black;
