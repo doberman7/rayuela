@@ -11,22 +11,25 @@ $(document).ready(function(){
       for (var tdN = 1; tdN <= lengtH; tdN++) {
         //anexar en cada fila un "td" con id="tdN"
         $(tableRow).append("<td id="+tdN+"></td>");
-        //$(tableRow).append("<td id="+tdN+">fila: "+k+" id: "+tdN+"</td>");
-        //MOVER CLASE ACTIVE:
-        //en 950 milisegs, en la fila encontrar hijo con lcase "active" y al siguiente elemento y añadir la clase "active"
+        //si el id del td creado es al lengtH -1, quiere decir que es el penultimo, entonces....
+        if (tdN==lengtH - 1) {
+          //agregar al td de cada jugador un fondo color blanco, este serà la meta
+          $("#Player1 #"+tdN+"").css("background-color","white")
+          $("#Player2 #"+tdN+"").css("background-color","white")
+        }
+
+        //$(tableRow).append("<td id="+tdN+">fila: "+k+" id: "+tdN+"</td>");//
       };
     });//-------------------------------------------
 
-    //boton "jugar" inicia el juego
-    $("#start_btn").bind(throwDices());
+  //boton "jugar" inicia el juego
+  $("#start_btn").bind(throwDices());
   //anexar boton reiniciar
   $(".table").prepend("<button id=restart_btn>Reiniciar</button><br>");
+  //atar mentodo "restarGame" al boton con id=restart_btn
   $("#restart_btn").bind(restarGame());
   //atar evento "keydown" al metod creado llamando keyStop
   $(window).bind(keyStop());
-
-
-
 
 });//------------------FIN DOCUMENT READY
 
