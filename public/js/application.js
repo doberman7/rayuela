@@ -1,7 +1,10 @@
 $(document).ready(function(){
   //asignar filas a variable
   var $tableRows = $("tr");
+  //variable global para determinar tamaño de tablero
   lengtH = 15
+  //variable global para cachar el id de la casilla meta
+  meta = ""
   //variable global para las teclas S y Ñ respectivamente
   teclaS = false;
   teclaÑ = false;
@@ -14,8 +17,10 @@ $(document).ready(function(){
         //si el id del td creado es al lengtH -1, quiere decir que es el penultimo, entonces....
         if (tdN==lengtH - 1) {
           //agregar al td de cada jugador un fondo color blanco, este serà la meta
-          $("#Player1 #"+tdN+"").css("background-color","white")
-          $("#Player2 #"+tdN+"").css("background-color","white")
+          $("#Player1 #"+tdN+"").css("border","solid white");
+          $("#Player2 #"+tdN+"").css("border","solid white");
+          //capturar numero de id de casilla meta
+          meta = tdN          
         }
 
         //$(tableRow).append("<td id="+tdN+">fila: "+k+" id: "+tdN+"</td>");//
@@ -31,7 +36,14 @@ $(document).ready(function(){
   //atar evento "keydown" al metod creado llamando keyStop
   $(window).bind(keyStop());
 
+
 });//------------------FIN DOCUMENT READY
+
+console.log();
+
+
+
+
 
 //funcion para detener avance del metodo lanzar dado, basicamente asigna valores true a las variables globales teclaS y teclaÑ
 function keyStop() {
