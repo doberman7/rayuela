@@ -29,7 +29,7 @@ $(document).ready(function(){
           meta = tdN
         }
       };
-    });//-------------------------------------------
+    });//FIN CRACION DE TABLERO
 
   //boton "jugar" inicia el juego
   $("#start_btn").bind(throwDices());
@@ -39,12 +39,9 @@ $(document).ready(function(){
   $("#restart_btn").bind(restarGame());
   //atar evento "keydown" al metod creado llamando keyStop
   $(window).bind(keyStop());
+});//FIN DOCUMENT READY
 
-
-
-});//------------------FIN DOCUMENT READY
-
-//FUNCION PARA DETERMINAR GANADOR
+//--------------------------------------------------------FUNCION PARA DETERMINAR GANADOR
 function winerIs(tp1,tp2){
   // determinar que tan cerca se esta de la meta
   var p1Point = meta - parseInt(tp1);
@@ -75,7 +72,21 @@ function winerIs(tp1,tp2){
   };
 };
 
-//funcion para detener avance del metodo lanzar dado, basicamente asigna valores true a las variables globales teclaS y teclaÑ
+//function para iniciar juego por cada jugador
+function throwDices() {
+  //vincular click a boton "jugar" las funciones lanzar dados de cada jugador
+  $("#start_btn").click(function () {
+    lanzarDado("#Player1",lengtH);
+    lanzarDado("#Player2", lengtH);
+    bothPlayers = 0
+  });
+};//-FIN LANZAR AMABOS DADOS
+
+
+
+
+
+//-------------------------------------------------------DETENER AVANCE
 function keyStop() {
   $(window).keydown(function (  ) {
     p1Index = 0
@@ -98,7 +109,7 @@ function keyStop() {
 
 };
 
-//crear funcion que recibe un jugador
+//------------------------------------------LANZAR DADO
 function lanzarDado(player, lengtH) {
     //asignar variable que obtiene objeto con la clase active = CURRENT, remover la clase "active" de CURRENT
     var $current_player = $(player).find(".active").removeClass("active");
@@ -135,20 +146,10 @@ function lanzarDado(player, lengtH) {
     // de tal manera que al determinar el GANADOR los puntajes de 0, y ambos sean catalogados como perdedores
     winerIs(tp1,tp2);
   }
-};//----------FIN LANZAR DADO
-
-//function para iniciar juego por cada jugador
-function throwDices() {
-  //vincular click a boton "jugar" las funciones lanzar dados de cada jugador
-  $("#start_btn").click(function () {
-    lanzarDado("#Player1",lengtH);
-    lanzarDado("#Player2", lengtH);
-    bothPlayers = 0
-  });
-};//----------FIN LANZAR AMABOS DADOS
+};//FIN LANZAR DADO
 
 
-function restarGame(){//--------REINICIAR JUEGO
+function restarGame(){//----------------------------------------------REINICIAR JUEGO
   //al hacer click en el boton "reiniciar "
   $("#restart_btn").click(function () {
     //encontrar "td .active" y remover clase active
