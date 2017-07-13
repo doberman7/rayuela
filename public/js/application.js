@@ -17,13 +17,14 @@ $(document).ready(function(){
       };
     });//-------------------------------------------
 
+    //boton "jugar" inicia el juego
+    $("#start_btn").bind(throwDices());
   //anexar boton reiniciar
   $(".table").prepend("<button id=restart_btn>Reiniciar</button><br>");
   $("#restart_btn").bind(restarGame());
   //atar evento "keydown" al metod creado llamando keyStop
   $(window).bind(keyStop());
-  //boton "jugar" inicia el juego
-  $("#start_btn").bind(throwDices());
+
 
 
 
@@ -56,26 +57,37 @@ function lanzarDado(player, lengtH) {
     //si el largo del <tr id="Player1">  es mayor o igual la indice del <td class="active">
   }else if (lengtH -1 >= $($current_player).index()){
       //establecer tiempo de ejecucion de lanzar el dado
+      //console.log("recursion");
       setTimeout(function() {
         lanzarDado(player, lengtH);
       },200);
     }
-};//-------------------------------------------
+};//----------FIN LANZAR DADO
 
+//function para iniciar juego por cada jugador
 function throwDices() {
-  $(this).click(function () {
+  //vincular click a boton "jugar" las funciones lanzar dados de cada jugador
+  $("#start_btn").click(function () {
     lanzarDado("#Player1",lengtH);
     lanzarDado("#Player2", lengtH);
   })
-};
+};//----------FIN LANZAR AMABOS DADOS
 
 
-
-function restarGame(){
-  $(this).click(function () {
-
+function restarGame(){//--------REINICIAR JUEGO
+  //al hacer click en el boton "reiniciar "
+  $("#restart_btn").click(function () {
+    //encontrar "td .active" y remover clase active
+    $("#Player1").find(".active").removeClass("active");
+    $("#Player2").find(".active").removeClass("active");
+    //añadir al td siguiente de "#playerN" la clase active
+    $("#player1").next().addClass("active");
+    $("#player2").next().addClass("active");
+    //asignar falso a las variables globales, de tal que se reiniciar funcionalidad lanzarDado
+    teclaS = false;
+    teclaÑ = false;
   })
-};
+};//---------------------FIN REINICIAR JUEGO
 
 //source: https://api.jquery.com/event.which/
 //ver en inspector la tecla precionada
