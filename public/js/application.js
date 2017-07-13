@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  bothPlayers = 0
+
   //asignar filas a variable
   var $tableRows = $("tr");
   //variable global para determinar tamaño de tablero
@@ -64,7 +66,11 @@ function winerIs(tp1,tp2){
     //console.log("EMPATE");
     //si ambos son menores a -1 AMBOS PIERDEN
   } else if ( p2Point <= -1 && p1Point <= -1) {
-    console.log("AMBOS PIERDEN");
+    bothPlayers +=1
+
+    if (bothPlayers == 2) {
+      console.log("nadie tiro");
+    }
     //console.log("P1" + p1Point + "P2" + p2Point+ "");
   };
 };
@@ -102,12 +108,8 @@ function lanzarDado(player, lengtH) {
     if (player == "#Player1" && teclaS == true){
       //console.log("Player1 terminado");
 
-
     }else if (player == "#Player2" && teclaÑ == true){
       //console.log("Player2 terminado");
-
-
-
 
     //si el largo del <tr id="Player1">  es mayor o igual la indice del <td class="active">
     }else if (lengtH -1 >= $($current_player).index()){
@@ -141,6 +143,7 @@ function throwDices() {
   $("#start_btn").click(function () {
     lanzarDado("#Player1",lengtH);
     lanzarDado("#Player2", lengtH);
+    bothPlayers = 0
   });
 };//----------FIN LANZAR AMABOS DADOS
 
