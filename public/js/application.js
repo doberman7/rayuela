@@ -53,21 +53,22 @@ function winerIs(tp1,tp2){
   p2LastActive = $("#Player2 ").find(".active").attr("id");
   p1LastActive = $("#Player1 ").find(".active").attr("id");
   // si el p2 tiene un valor menor a p1 y mayor a -1 es el GANADOR
-
+  console.log("Puntos del P1"+p1Point);
+  console.log("Puntos del P2"+p2Point);
   console.log("p1LastActive: " + p1LastActive);
   console.log("p2LastActive: " + p2LastActive);
   if (p1Point > p2Point && p2Point > -1 && p2LastActive <= 14) {
-      console.log("P2 GANA");
+      console.log("P2 GANA----");
 
       //console.log("P1" + p1Point + "P2" + p2Point+ "");
     // si el p1 tiene un valor menor a p2 y mayor a -1 es el GANADOR
   } else if (p1Point < p2Point && p1Point > -1 && p1LastActive <= 14) {
-    console.log("P1 GANA");
+    console.log("P1 GANA----");
 
     //console.log("P1" + p1Point + "P2" + p2Point+ "");
     //si ambos comparten el mismo valor y son mayores a -1 es EMPATE
   } else if (p1Point == p2Point && p2Point > -1 && p1Point > -1 && p1LastActive < 15 && p2LastActive < 15) {
-    console.log("EMPATE");
+    console.log("EMPATE----");
     // console.log("PUNTOS P1  " + p1Point +"");
     // console.log("PUNTOS P2  " + p2Point+ "");
     //console.log("EMPATE");
@@ -157,19 +158,6 @@ function lanzarDado(player, lengtH) {
     winerIs(tp1,tp2);
   };
 
-
-  // if (p2LastActive == 15) {
-  //     console.log("jugado 1 GANADOR");
-  //     // if (jugador1Tirado == true && jugador2Tirado == false && p1UniqueTrow == true) {
-  //     //   console.log("dddd");
-  //     // };
-  // }
-
-
-
-  if (jugador1Tirado == false && jugador2Tirado == true && p2UniqueTrow == true) {
-
-  };
 };//FIN LANZAR DADO
 
 
